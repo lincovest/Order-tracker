@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>SpeedyGo Order Tracking</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: #f6f6f6;
+        color: #333;
+        text-align: center;
+        margin: 0;
+    }
+    header {
+        background: #007bff;
+        color: white;
+        padding: 15px;
+        font-size: 1.5em;
+        font-weight: bold;
+    }
+    .container {
+        max-width: 600px;
+        background: white;
+        margin: 30px auto;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    .order-info {
+        font-size: 1.2em;
+        margin-bottom: 20px;
+    }
+    .status {
+        font-size: 1.4em;
+        margin-bottom: 15px;
+        font-weight: bold;
+    }
+    .progress {
+        background: #ddd;
+        border-radius: 20px;
+        overflow: hidden;
+        height: 20px;
+        margin: 10px 0;
+    }
+    .progress-bar {
+        background: #28a745;
+        height: 20px;
+        width: 0%;
+        transition: width 1s;
+    }
+    iframe {
+        width: 100%;
+        height: 300px;
+        border: none;
+        border-radius: 8px;
+        margin-top: 15px;
+    }
+</style>
+</head>
+<body>
+
+<header>SpeedyGo Order Tracking</header>
+
+<div class="container">
+    <div class="order-info">Order #: PRANK-12345</div>
+    <div class="status" id="status">Status: Order Confirmed ✅</div>
+    <div class="progress">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <iframe
+        src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d3151.835434508612!2d144.9630576!3d-37.8142179!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2s!4v1700000000000"
+        loading="lazy">
+    </iframe>
+</div>
+
+<script>
+    const steps = [
+        "Order Confirmed ✅",
+        "Picked up from warehouse 📦",
+        "In transit 🚛",
+        "Out for delivery 🚚",
+        "Delivered 📬"
+    ];
+    let i = 0;
+    const progressBar = document.getElementById("progressBar");
+    const statusDiv = document.getElementById("status");
+
+    function updateStatus() {
+        statusDiv.textContent = "Status: " + steps[i];
+        progressBar.style.width = ((i+1) / steps.length) * 100 + "%";
+        i = (i + 1) % steps.length;
+    }
+
+    setInterval(updateStatus, 4000); // change every 4 seconds
+    updateStatus();
+</script>
+
+</body>
+</html> 
